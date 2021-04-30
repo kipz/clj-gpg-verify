@@ -1,5 +1,7 @@
 # clj-gpg-verify
 
+[![Clojars Project](https://img.shields.io/clojars/v/org.kipz/clj-gpg-verify.svg)](https://clojars.org/org.kipz/clj-gpg-verify)
+
 Verify tools deps/lein dependency gpg signatures via allow-list
 
 Uses https://github.com/liquidz/antq for much of file/artifact wrangling, but also
