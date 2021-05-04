@@ -24,16 +24,17 @@
        (let [u-env (some->> repo-config :username)
              u-env (if (string? u-env)
                      u-env
-                     (some->> u-env (filter #(= "env" (namespace %))) first name (.toUpperCase)))
+                     (some->> u-env (filter #(= "env" (namespace %))) first name (.toUpperCase) (System/getenv)))
              p-env (some->> repo-config :password)
              p-env (if (string? p-env)
                      p-env
-                     (some->> p-env (filter #(= "env" (namespace %))) first name (.toUpperCase)))]
+                     (some->> p-env (filter #(= "env" (namespace %))) first name (.toUpperCase) (System/getenv)))]
+
          (if (and u-env p-env)
            (.build (doto (RemoteRepository$Builder. repo)
                      (.setAuthentication (.build (doto (AuthenticationBuilder.)
-                                                   (.addUsername (System/getenv u-env))
-                                                   (.addPassword (System/getenv p-env)))))))
+                                                   (.addUsername u-env)
+                                                   (.addPassword p-env))))))
            repo))
        repo))
    remote-repos))
