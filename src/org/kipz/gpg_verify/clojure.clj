@@ -18,4 +18,4 @@
         (core/verify-artifact artifact)
         (println "Signature Verified:" (.getName (.getFile artifact))))
       (System/exit 0))
-    (println "Add dependencies to project.clj like {:verify [[clojure/clojure]]}")))
+    (println "Add dependencies to project.clj like {:verify [clojure/clojure]}")))

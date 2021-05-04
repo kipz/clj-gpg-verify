@@ -21,8 +21,14 @@
    (fn [^RemoteRepository repo]
      (if-let [repo-config (get (:repositories dep) (.getId repo))]
        ;; add in env from project clj if present
-       (let [u-env (some->> repo-config :username (filter #(= "env" (namespace %))) first name (.toUpperCase))
-             p-env (some->> repo-config :password (filter #(= "env" (namespace %))) first name (.toUpperCase))]
+       (let [u-env (some->> repo-config :username)
+             u-env (if (string? u-env)
+                     u-env
+                     (some->> u-env (filter #(= "env" (namespace %))) first name (.toUpperCase)))
+             p-env (some->> repo-config :password)
+             p-env (if (string? p-env)
+                     p-env
+                     (some->> p-env (filter #(= "env" (namespace %))) first name (.toUpperCase)))]
          (if (and u-env p-env)
            (.build (doto (RemoteRepository$Builder. repo)
                      (.setAuthentication (.build (doto (AuthenticationBuilder.)
