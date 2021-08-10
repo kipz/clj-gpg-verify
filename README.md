@@ -17,12 +17,12 @@ Add the following to your deps.edn:
 
   :gpg-verify {:exec-fn org.kipz.gpg-verify.clojure/gpg-verify
                :exec-args {:verify [mycommany/internal-cljj]}
-               :extra-deps {org.kipz/clj-gpg-verify {:mvn/version "0.1.0"}}}
+               :extra-deps {org.kipz/clj-gpg-verify {:mvn/version "0.1.2"}}}
 ```
 
 ### Leiningen
 
-Put `[clj-gpg-verify "0.1.0"]` into the `:plugins` vector of your `:user`
+Put `[clj-gpg-verify "0.1.2"]` into the `:plugins` vector of your `:user`
 profile or in the `:plugins` of your poject.clj:
 
 Add a list of dependencies to verify to your project.clj:
