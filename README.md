@@ -22,7 +22,7 @@ Add the following to your deps.edn:
 
 ### Leiningen
 
-Put `[clj-gpg-verify "0.1.2"]` into the `:plugins` vector of your `:user`
+Put `[org.kipz/clj-gpg-verify "0.1.2"]` into the `:plugins` vector of your `:user`
 profile or in the `:plugins` of your poject.clj:
 
 Add a list of dependencies to verify to your project.clj:
